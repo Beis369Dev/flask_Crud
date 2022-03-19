@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{%block body%}
+
+<div class="row">
+    <div class="col-md-12">
+
+        {% with messages= get_flashed_messages()%}
+        {%if messages%}
+        {% for message in messages %}
+        <div class="alert alert alert-info alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-5">
+    
+        <div class="card card-body">
+            <form action="/add_contact" method="POST">
+                
+                <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                <input type="text" name="Name" autocomplete="off" class="form-control" placeholder=" Ingrese su Nombre">
+                </div>
+                <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+                <input type="text" name="LastName" class="form-control" autocomplete="off" placeholder="Ingrese su Apellido">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Cedula</label>
+                <input type="number"class="form-control" name="C.I" autocomplete="off" placeholder="Ingrese su C.I">
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit"class="btn btn-dark">Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+   
+
+
+    <div class="col-md-6">
+
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Cedula</td>
+                    <td>Operaciones</td>
+                </tr>
+            <tbody>
+                {%for dato in datainfo%}
+                <tr>
+                    <td>{{dato.1}}</td>
+                    <td>{{dato.2}}</td>
+                    <td>{{dato.3}}</td>
+                    <td> <a href="/edit/{{dato.0}}"class="btn btn-success">Editar</a>
+                        <a href="/delet/{{dato.0}}"class="btn btn-danger">Borrar</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+            </thead>
+        </table>
+    </div>
+
+</div>
+
+{%endblock%}

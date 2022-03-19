@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="card card-body">
+
+
+    <form action="/save_data/{{get_Query.0}}" method="POST">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input type="text" name="Name" class="form-control" autocomplete="off" id="Name" placeholder=" Modifique el Nombre" value="{{get_Query.1}}">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+            <input type="text" name="LastName"class="form-control" id="LastName" autocomplete="off" placeholder="Modifique el Apellido" value="{{get_Query.2}}">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Cedula</label>
+            <input type="number" name="C.I" class="form-control" id="C.I" autocomplete="off" placeholder="Modifique la Cedula" value="{{get_Query.3}}">
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit"class="btn btn-dark">Modificar</button>
+         </div>
+    </form>
+</div>
+
+{%endblock%}
